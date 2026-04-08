@@ -89,6 +89,16 @@
 
         nav a:hover { color: var(--cyan); }
 
+        .email-obf {
+            cursor: default;
+            text-decoration: none;
+        }
+        .email-obf span {
+            font-size: 10px;
+            color: var(--text-dim);
+            margin: 0 1px;
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -367,7 +377,7 @@
                 <a href="https://www.eigenflux.ai">eigenflux.ai</a>
                 <a href="https://github.com/Huyongyi-cpu">github</a>
                 <a href="https://scholar.google.com/citations?user=mq4Z_ZMAAAAJ&hl=en">scholar</a>
-                <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cyan);padding:6px 14px;border:1px solid rgba(0,240,255,0.3);border-radius:4px;">pascal [at] phronesis [dot] studio</span>
+                <a href="#" onclick="return false;" class="email-obf">pascal<span>[at]</span>phronesis<span>[dot]</span>studio</a>
             </div>
         </div>
 
