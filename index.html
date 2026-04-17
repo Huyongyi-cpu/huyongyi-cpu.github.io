@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pascal (Yongyi Hu) — Chief Scientist @ Phronesis | EigenFlux.ai</title>
     <meta name="description" content="Pascal (Yongyi Hu) — Chief Scientist & Co-founder at Phronesis, building EigenFlux.ai, an agent-to-agent communication network. Ex-MiniMax (large model training lead), ex-Meta FAIR Paris (LLaMA, theorem proving). Dual degree SJTU & École Polytechnique.">
-    <meta name="keywords" content="Pascal Hu, Yongyi Hu, Phronesis, EigenFlux, agent communication, multi-agent, LLM, MiniMax, Meta FAIR, LLaMA, theorem proving, Chief Scientist, SJTU, École Polytechnique">
+    <meta name="keywords" content="Pascal Hu, Yongyi Hu, Phronesis, EigenFlux, agent communication, multi-agent, LLM, MiniMax, Meta FAIR, LLaMA, theorem proving, Chief Scientist, SJTU, École Polytechnique, agent transmission layer, whitepaper">
     <meta name="author" content="Pascal (Yongyi Hu)">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://huyongyi-cpu.github.io/">
@@ -55,7 +55,8 @@
         "Agent Coordination Protocols",
         "Large Language Models",
         "Reinforcement Learning",
-        "Automated Theorem Proving"
+        "Automated Theorem Proving",
+        "Agent Transmission Layer"
       ]
     }
     </script>
@@ -65,11 +66,19 @@
         :root {
             --bg: #0a0a0f;
             --bg-card: #12121a;
+            --bg-card-hover: #161620;
             --border: #1e1e2e;
+            --border-bright: #2a2a3e;
             --cyan: #00f0ff;
+            --cyan-dim: rgba(0, 240, 255, 0.15);
             --magenta: #ff00aa;
+            --magenta-dim: rgba(255, 0, 170, 0.15);
             --green: #00ff88;
+            --green-dim: rgba(0, 255, 136, 0.15);
             --yellow: #ffee00;
+            --yellow-dim: rgba(255, 238, 0, 0.15);
+            --orange: #ff8844;
+            --orange-dim: rgba(255, 136, 68, 0.15);
             --text: #c8c8d4;
             --text-dim: #6b6b80;
             --text-bright: #f0f0ff;
@@ -123,13 +132,21 @@
             border-bottom: 1px solid var(--border);
             padding: 16px 0;
             z-index: 100;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
+
+        /* hide scrollbar but keep scrollable */
+        nav::-webkit-scrollbar { display: none; }
+        nav { -ms-overflow-style: none; scrollbar-width: none; }
 
         nav ul {
             display: flex;
             justify-content: center;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
+            padding: 0 20px;
+            min-width: max-content;
         }
 
         nav a {
@@ -140,6 +157,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         nav a:hover { color: var(--cyan); }
@@ -155,7 +173,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 840px;
             margin: 0 auto;
             padding: 100px 24px 80px;
         }
@@ -195,7 +213,7 @@
 
         .hero-links {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
         }
 
@@ -289,6 +307,174 @@
             color: var(--text-dim);
         }
 
+        .timeline-desc a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .timeline-desc a:hover {
+            text-decoration: underline;
+        }
+
+        /* Project cards */
+        .project-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .project-card {
+            padding: 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-bright);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card.accent-cyan::before { background: linear-gradient(90deg, var(--cyan), transparent); }
+        .project-card.accent-magenta::before { background: linear-gradient(90deg, var(--magenta), transparent); }
+        .project-card.accent-green::before { background: linear-gradient(90deg, var(--green), transparent); }
+        .project-card.accent-orange::before { background: linear-gradient(90deg, var(--orange), transparent); }
+
+        .project-card:hover.accent-cyan { border-color: rgba(0, 240, 255, 0.3); }
+        .project-card:hover.accent-magenta { border-color: rgba(255, 0, 170, 0.3); }
+        .project-card:hover.accent-green { border-color: rgba(0, 255, 136, 0.3); }
+        .project-card:hover.accent-orange { border-color: rgba(255, 136, 68, 0.3); }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-bright);
+        }
+
+        .project-title a {
+            color: var(--text-bright);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .project-card.accent-cyan .project-title a:hover { color: var(--cyan); }
+        .project-card.accent-magenta .project-title a:hover { color: var(--magenta); }
+        .project-card.accent-green .project-title a:hover { color: var(--green); }
+        .project-card.accent-orange .project-title a:hover { color: var(--orange); }
+
+        .project-badges {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .badge-cyan { background: var(--cyan-dim); color: var(--cyan); }
+        .badge-green { background: var(--green-dim); color: var(--green); }
+        .badge-magenta { background: var(--magenta-dim); color: var(--magenta); }
+        .badge-orange { background: var(--orange-dim); color: var(--orange); }
+        .badge-yellow { background: var(--yellow-dim); color: var(--yellow); }
+
+        .project-desc {
+            font-size: 14.5px;
+            color: var(--text);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-meta a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-meta a:hover { color: var(--cyan); }
+        .project-meta a::before { content: '→'; color: var(--text-dim); }
+
+        /* Blog list */
+        .blog-list {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        .blog-list-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .blog-list ol {
+            list-style: none;
+            counter-reset: blog-counter;
+        }
+
+        .blog-list li {
+            counter-increment: blog-counter;
+            font-size: 13px;
+            margin-bottom: 6px;
+            padding-left: 4px;
+        }
+
+        .blog-list li::before {
+            content: counter(blog-counter) '.';
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .blog-list li a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .blog-list li a:hover { color: var(--magenta); }
+
         /* Research */
         .research-tags {
             display: flex;
@@ -314,19 +500,32 @@
 
         /* Publications */
         .pub {
-            padding: 16px 20px;
-            margin-bottom: 12px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+
+        .pub:hover {
+            border-color: var(--border-bright);
         }
 
         .pub-title {
             color: var(--text-bright);
             font-weight: 600;
             font-size: 15px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
+
+        .pub-title a {
+            color: var(--text-bright);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .pub-title a:hover { color: var(--cyan); }
 
         .pub-authors {
             font-size: 13px;
@@ -343,38 +542,6 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             color: var(--magenta);
-        }
-
-        /* Current */
-        .current-project {
-            padding: 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            margin-bottom: 16px;
-        }
-
-        .current-project h3 {
-            color: var(--text-bright);
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
-
-        .current-project h3 a {
-            color: var(--cyan);
-            text-decoration: none;
-        }
-
-        .current-project .stat {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            color: var(--green);
-            margin-bottom: 12px;
-        }
-
-        .current-project p {
-            font-size: 14px;
-            color: var(--text-dim);
         }
 
         /* Quote */
@@ -403,10 +570,21 @@
             color: var(--text-dim);
         }
 
+        footer a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover { color: var(--cyan); }
+
         @media (max-width: 600px) {
             .hero h1 { font-size: 32px; }
             .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-            nav ul { gap: 16px; }
+            nav ul { gap: 20px; justify-content: flex-start; padding: 0 16px; }
+            .project-header { flex-direction: column; }
+            .project-badges { margin-top: 4px; }
+            .project-title { font-size: 17px; }
         }
     </style>
 </head>
@@ -416,10 +594,10 @@
     <nav>
         <ul>
             <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#current">Current</a></li>
-            <li><a href="#research">Research</a></li>
             <li><a href="#publications">Publications</a></li>
+            <li><a href="#research">Research</a></li>
         </ul>
     </nav>
 
@@ -430,6 +608,7 @@
             <p class="hero-subtitle">Building the communication layer for autonomous agents.</p>
             <div class="hero-links">
                 <a href="https://www.eigenflux.ai">eigenflux.ai</a>
+                <a href="https://github.com/phronesis-io">phronesis-io</a>
                 <a href="https://github.com/Huyongyi-cpu">github</a>
                 <a href="https://scholar.google.com/citations?user=mq4Z_ZMAAAAJ&hl=en">scholar</a>
                 <a href="#" onclick="return false;" class="email-obf">pascal<span>[at]</span>phronesis<span>[dot]</span>studio</a>
@@ -441,7 +620,7 @@
             <p>
                 I'm the Chief Scientist at <span class="highlight">Phronesis</span>, where we built
                 <span class="highlight">EigenFlux.ai</span> — an agent-to-agent communication network
-                enabling AI agents to share real-time signals at scale. 3,200+ agents connected and growing.
+                enabling AI agents to share real-time signals at scale. 3,200+ agents connected and growing organically.
             </p>
             <p>
                 Previously, I worked on automated theorem proving at <span class="highlight">Meta FAIR Paris</span> and contributed to the early-stage LLaMA project.
@@ -458,6 +637,96 @@
             </div>
         </section>
 
+        <section id="projects">
+            <div class="section-header">Projects</div>
+            <div class="project-grid">
+
+                <div class="project-card accent-cyan">
+                    <div class="project-header">
+                        <div class="project-title"><a href="https://github.com/phronesis-io/eigenflux">EigenFlux</a></div>
+                        <div class="project-badges">
+                            <span class="badge badge-green">open source</span>
+                            <span class="badge badge-cyan">3,200+ agents</span>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        The first open-source communication network purpose-built for AI agents.
+                        Not chat. Not search. Agents declare intent and receive matched, relevant signals through a centralized hub — structured broadcast, private messaging, and supply-demand matching.
+                        Organic growth from day one: 1,000+ agents in the first 24 hours, no paid promotion.
+                    </div>
+                    <div class="project-meta">
+                        <a href="https://www.eigenflux.ai">eigenflux.ai</a>
+                        <a href="https://github.com/phronesis-io/eigenflux">github</a>
+                    </div>
+                </div>
+
+                <div class="project-card accent-magenta">
+                    <div class="project-header">
+                        <div class="project-title"><a href="https://github.com/phronesis-io/eigenflux-whitepaper">EigenFlux Whitepaper</a></div>
+                        <div class="project-badges">
+                            <span class="badge badge-magenta">new</span>
+                            <span class="badge badge-green">CC BY 4.0</span>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        A first-principles derivation of what an Agent Transmission Layer must look like.
+                        We formalize agent communication through supply and demand utility functions,
+                        prove a Mutual Benefit Principle that maximizes social welfare without harming any participant,
+                        and show that hub-and-spoke is the optimal topology for a network where agents are mutually invisible.
+                    </div>
+                    <div class="blog-list">
+                        <div class="blog-list-title">Companion blog series (English)</div>
+                        <ol>
+                            <li><a href="https://github.com/phronesis-io/eigenflux-whitepaper/blob/main/blogs/01.md">Why the Internet Fails Its Newest Participants: AI Agents</a></li>
+                            <li><a href="https://github.com/phronesis-io/eigenflux-whitepaper/blob/main/blogs/02.md">What Would a Network Built for Agents Actually Look Like?</a></li>
+                            <li><a href="https://github.com/phronesis-io/eigenflux-whitepaper/blob/main/blogs/03.md">Why Agents Need a Hub</a></li>
+                            <li><a href="https://github.com/phronesis-io/eigenflux-whitepaper/blob/main/blogs/04.md">Keeping the Hub Honest: Trust, Governance, and Safety</a></li>
+                        </ol>
+                    </div>
+                    <div class="project-meta" style="margin-top: 14px;">
+                        <a href="https://github.com/phronesis-io/eigenflux-whitepaper">read whitepaper</a>
+                    </div>
+                </div>
+
+                <div class="project-card accent-green">
+                    <div class="project-header">
+                        <div class="project-title">Proactive Agent Evaluation</div>
+                        <div class="project-badges">
+                            <span class="badge badge-yellow">in progress</span>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        An evaluation benchmark measuring whether persistent information feeds improve
+                        agent proactiveness in multi-heartbeat settings. Paired comparison design:
+                        identical agent and scenario, with vs. without EigenFlux signals.
+                        Scored on coverage, timeliness, action quality, and accuracy.
+                        Goal: a modular, open benchmark where any change to an agent's configuration
+                        can be independently measured for its impact on proactiveness.
+                    </div>
+                </div>
+
+                <div class="project-card accent-orange">
+                    <div class="project-header">
+                        <div class="project-title"><a href="https://github.com/phronesis-io/pascal-jarvis">Jarvis</a></div>
+                        <div class="project-badges">
+                            <span class="badge badge-orange">open source</span>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        A harness that turns Claude Code into a persistent personal AI agent.
+                        Continuous heartbeat loop, 5-layer self-evolving memory system
+                        (hourly → daily → weekly → monthly → permanent),
+                        bidirectional IM integration (Lark/Feishu), and native EigenFlux connectivity.
+                        Ships with an admin dashboard for browsing memory, sessions, and heartbeat status.
+                    </div>
+                    <div class="project-meta">
+                        <a href="https://github.com/phronesis-io/pascal-jarvis">github</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section id="experience">
             <div class="section-header">Experience</div>
 
@@ -467,9 +736,9 @@
                     <h3>Phronesis</h3>
                     <div class="timeline-role">Chief Scientist & Co-founder</div>
                     <div class="timeline-desc">
-                        Built EigenFlux.ai — open-source agent communication network.
-                        Intent-based broadcast + private messaging. 3,200+ agent nodes.
-                        Designing agent communication protocols and proactive agent evaluation benchmarks.
+                        Built EigenFlux.ai — an open-source agent communication network with 3,200+ connected agents.
+                        Designed the Agent Transmission Layer protocol, proactive agent evaluation framework,
+                        and the underlying supply-demand matching algorithms.
                     </div>
                 </div>
             </div>
@@ -494,35 +763,47 @@
                     <div class="timeline-role">Research Intern</div>
                     <div class="timeline-desc">
                         Worked on automated theorem proving using LLM + reinforcement learning in the Lean environment
-                        (<a href="https://ai.meta.com/blog/ai-math-theorem-proving/" style="color:var(--cyan)">acknowledged in blog</a>).
+                        (<a href="https://ai.meta.com/blog/ai-math-theorem-proving/">acknowledged in blog</a>).
                         Contributed to early-stage data collection for the LLaMA project
-                        (<a href="https://arxiv.org/abs/2302.13971" style="color:var(--cyan)">acknowledged in paper</a>).
+                        (<a href="https://arxiv.org/abs/2302.13971">acknowledged in paper</a>).
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="current">
-            <div class="section-header">Current Work</div>
+        <section id="publications">
+            <div class="section-header">Publications</div>
 
-            <div class="current-project">
-                <h3><a href="https://github.com/phronesis-io/eigenflux">EigenFlux</a></h3>
-                <div class="stat">● active — 3,200+ agents — open source</div>
-                <p>
-                    An agent broadcast network where AI agents subscribe to signals instead of searching.
-                    Not chat. Not search. Structured intent-driven signal exchange through a centralized gateway.
-                    Agents declare their intent and receive matched, relevant signals in real time.
-                </p>
+            <div class="pub">
+                <div class="pub-title"><a href="https://github.com/phronesis-io/eigenflux-whitepaper">What Communication Network Do AI Agents Need? — The EigenFlux Whitepaper</a></div>
+                <div class="pub-authors">
+                    <span class="me">Y. Hu</span>*, Y. Shi* &nbsp;<span style="font-size:11px;color:var(--text-dim);">(*equal contribution)</span>
+                </div>
+                <div class="pub-venue">Phronesis AI, 2026 — CC BY 4.0</div>
             </div>
 
-            <div class="current-project">
-                <h3>Proactive Agent Evaluation</h3>
-                <div class="stat">● in progress — paired benchmark</div>
-                <p>
-                    Benchmark measuring whether persistent information feeds improve agent proactiveness
-                    in multi-heartbeat settings. Paired comparison: same agent with vs. without EigenFlux,
-                    scored on coverage, timeliness, action quality, and accuracy.
-                </p>
+            <div class="pub">
+                <div class="pub-title"><a href="https://arxiv.org/abs/2505.19641">SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond</a></div>
+                <div class="pub-authors">
+                    J. Liu, Y. Fan, Z. Jiang, H. Ding, <span class="me">Y. Hu</span>, C. Zhang, Y. Shi, S. Weng, A. Chen, S. Chen, Y. Huang, M. Zhang, P. Zhao, J. Yan, J. He
+                </div>
+                <div class="pub-venue">arXiv, 2025</div>
+            </div>
+
+            <div class="pub">
+                <div class="pub-title"><a href="https://arxiv.org/abs/2506.13585">MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention</a></div>
+                <div class="pub-authors">
+                    MiniMax Team (incl. <span class="me">Y. Hu</span>)
+                </div>
+                <div class="pub-venue">arXiv, 2025</div>
+            </div>
+
+            <div class="pub">
+                <div class="pub-title"><a href="https://arxiv.org/abs/2501.08313">MiniMax-01: Scaling Foundation Models with Lightning Attention</a></div>
+                <div class="pub-authors">
+                    MiniMax Team (incl. <span class="me">Y. Hu</span>)
+                </div>
+                <div class="pub-venue">arXiv, 2025</div>
             </div>
         </section>
 
@@ -530,6 +811,7 @@
             <div class="section-header">Research Interests</div>
             <div class="research-tags">
                 <span class="tag">Multi-Agent Communication</span>
+                <span class="tag">Agent Transmission Layer</span>
                 <span class="tag">Agent Coordination Protocols</span>
                 <span class="tag">Proactive AI Systems</span>
                 <span class="tag">Agent Safety & Trust</span>
@@ -540,36 +822,9 @@
             </div>
         </section>
 
-        <section id="publications">
-            <div class="section-header">Publications</div>
-
-            <div class="pub">
-                <div class="pub-title"><a href="https://arxiv.org/abs/2505.19641" style="color:var(--text-bright);text-decoration:none;">SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond</a></div>
-                <div class="pub-authors">
-                    J. Liu, Y. Fan, Z. Jiang, H. Ding, <span class="me">Y. Hu</span>, C. Zhang, Y. Shi, S. Weng, A. Chen, S. Chen, Y. Huang, M. Zhang, P. Zhao, J. Yan, J. He
-                </div>
-                <div class="pub-venue">arXiv, 2025</div>
-            </div>
-
-            <div class="pub">
-                <div class="pub-title"><a href="https://arxiv.org/abs/2506.13585" style="color:var(--text-bright);text-decoration:none;">MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention</a></div>
-                <div class="pub-authors">
-                    MiniMax Team (incl. <span class="me">Y. Hu</span>)
-                </div>
-                <div class="pub-venue">arXiv, 2025</div>
-            </div>
-
-            <div class="pub">
-                <div class="pub-title"><a href="https://arxiv.org/abs/2501.08313" style="color:var(--text-bright);text-decoration:none;">MiniMax-01: Scaling Foundation Models with Lightning Attention</a></div>
-                <div class="pub-authors">
-                    MiniMax Team (incl. <span class="me">Y. Hu</span>)
-                </div>
-                <div class="pub-venue">arXiv, 2025</div>
-            </div>
-        </section>
-
         <footer>
             <p>// the future belongs to agents that can communicate</p>
+            <p style="margin-top: 8px;"><a href="https://www.eigenflux.ai">eigenflux.ai</a></p>
         </footer>
     </div>
 </body>
