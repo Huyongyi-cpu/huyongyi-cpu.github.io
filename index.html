@@ -597,6 +597,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#publications">Publications</a></li>
+            <li><a href="#talks">Talks</a></li>
             <li><a href="#research">Research</a></li>
         </ul>
     </nav>
@@ -620,7 +621,7 @@
             <p>
                 I'm the Chief Scientist at <span class="highlight">Phronesis</span>, where we built
                 <span class="highlight">EigenFlux.ai</span> — an agent-to-agent communication network
-                enabling AI agents to share real-time signals at scale. 3,200+ agents connected and growing organically.
+                enabling AI agents to share real-time signals at scale. Over a thousand agents connected and growing organically.
             </p>
             <p>
                 Previously, I worked on automated theorem proving at <span class="highlight">Meta FAIR Paris</span> and contributed to the early-stage LLaMA project.
@@ -646,17 +647,21 @@
                         <div class="project-title"><a href="https://github.com/phronesis-io/eigenflux">EigenFlux</a></div>
                         <div class="project-badges">
                             <span class="badge badge-green">open source</span>
-                            <span class="badge badge-cyan">3,200+ agents</span>
+                            <span class="badge badge-cyan">1,000+ agents</span>
+                            <span class="badge badge-yellow">460+ stars</span>
                         </div>
                     </div>
                     <div class="project-desc">
                         The first open-source communication network purpose-built for AI agents.
                         Not chat. Not search. Agents declare intent and receive matched, relevant signals through a centralized hub — structured broadcast, private messaging, and supply-demand matching.
-                        Organic growth from day one: 1,000+ agents in the first 24 hours, no paid promotion.
+                        Organic growth from day one: hundreds of agents joined in the first 24 hours, no paid promotion.
+                        Ships with a growing plugin ecosystem: Claude Code, Codex, and client-side integrations for external host environments.
                     </div>
                     <div class="project-meta">
                         <a href="https://www.eigenflux.ai">eigenflux.ai</a>
                         <a href="https://github.com/phronesis-io/eigenflux">github</a>
+                        <a href="https://github.com/phronesis-io/eigenflux-claude-plugin">claude plugin</a>
+                        <a href="https://github.com/phronesis-io/codex-eigenflux">codex plugin</a>
                     </div>
                 </div>
 
@@ -664,7 +669,8 @@
                     <div class="project-header">
                         <div class="project-title"><a href="https://github.com/phronesis-io/eigenflux-whitepaper">EigenFlux Whitepaper</a></div>
                         <div class="project-badges">
-                            <span class="badge badge-yellow">in progress</span>
+                            <span class="badge badge-cyan">full text (中文)</span>
+                            <span class="badge badge-yellow">EN translation in progress</span>
                             <span class="badge badge-green">CC BY 4.0</span>
                         </div>
                     </div>
@@ -673,6 +679,7 @@
                         We formalize agent communication through supply and demand utility functions,
                         prove a Mutual Benefit Principle that maximizes social welfare without harming any participant,
                         and show that hub-and-spoke is the optimal topology for a network where agents are mutually invisible.
+                        All eight chapters are complete (Chinese; English translation forthcoming).
                     </div>
                     <div class="blog-list">
                         <div class="blog-list-title">Companion blog series (English)</div>
@@ -697,11 +704,12 @@
                         </div>
                     </div>
                     <div class="project-desc">
-                        An open-source evaluation benchmark measuring whether persistent information feeds improve
-                        agent proactiveness in multi-heartbeat settings. Paired comparison design:
-                        identical agent and scenario, with vs. without EigenFlux signals.
-                        Results: +15.8pp send rate and ~3x useful signal volume with EigenFlux feed.
-                        Scored on coverage, timeliness, action quality, and accuracy.
+                        An open benchmark and paired-ablation harness for measuring proactive agent behavior —
+                        did the agent do the right thing without being asked?
+                        Same persona, scenario, and collection window run twice — once with a change applied, once without —
+                        so capability isn't confounded with information access.
+                        First study: EigenFlux feed vs. solo web search. Benchmark, scenarios, and harness are open
+                        for inspection and reproduction; the results report is forthcoming.
                     </div>
                     <div class="project-meta">
                         <a href="https://github.com/phronesis-io/proactive-eval">github</a>
@@ -716,11 +724,12 @@
                         </div>
                     </div>
                     <div class="project-desc">
-                        A harness that turns Claude Code into a persistent personal AI agent.
-                        Continuous heartbeat loop, 5-layer self-evolving memory system
-                        (hourly → daily → weekly → monthly → permanent),
-                        bidirectional IM integration (Lark/Feishu), and native EigenFlux connectivity.
-                        Ships with an admin dashboard for browsing memory, sessions, and heartbeat status.
+                        A harness that turns Claude Code into a persistent personal AI agent — installable by anyone,
+                        with all personal data externalized into per-user config.
+                        Continuous heartbeat loop, self-evolving tiered memory,
+                        a connector-based perception layer (IM, mail, calendar, product metrics),
+                        bidirectional Lark/Feishu integration, and native EigenFlux connectivity.
+                        Ships with an admin dashboard; 1,400+ tests. Now at v1.5.
                     </div>
                     <div class="project-meta">
                         <a href="https://github.com/phronesis-io/pascal-jarvis">github</a>
@@ -739,7 +748,7 @@
                     <h3>Phronesis</h3>
                     <div class="timeline-role">Chief Scientist & Co-founder</div>
                     <div class="timeline-desc">
-                        Built EigenFlux.ai — an open-source agent communication network with 3,200+ connected agents.
+                        Built EigenFlux.ai — an open-source agent communication network with over a thousand connected agents.
                         Designed the Agent Transmission Layer protocol, proactive agent evaluation framework,
                         and the underlying supply-demand matching algorithms.
                     </div>
@@ -807,6 +816,16 @@
                     MiniMax Team (incl. <span class="me">Y. Hu</span>)
                 </div>
                 <div class="pub-venue">arXiv, 2025</div>
+            </div>
+        </section>
+
+        <section id="talks">
+            <div class="section-header">Talks</div>
+
+            <div class="pub">
+                <div class="pub-title"><a href="https://ax.polytechnique.org/en/event/eigenflux-an-information-and-communication-network-for-ai-agents/2026/03/27/2969">EigenFlux: An Information and Communication Network for AI Agents</a></div>
+                <div class="pub-authors"><span class="me">Y. Hu</span></div>
+                <div class="pub-venue">AX — École Polytechnique Alumni Association, March 2026</div>
             </div>
         </section>
 
