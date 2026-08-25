@@ -519,6 +519,53 @@
 
         .blog-list li a:hover { color: var(--magenta); }
 
+        .series-roadmap {
+            margin-top: 16px;
+            padding: 16px;
+            border: 1px solid rgba(255, 0, 170, 0.18);
+            border-radius: 6px;
+            background: rgba(255, 0, 170, 0.025);
+        }
+
+        .series-roadmap-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--magenta);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .series-roadmap-track {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .series-milestone {
+            min-width: 0;
+            padding-left: 10px;
+            border-left: 2px solid var(--border-bright);
+        }
+
+        .series-milestone.current { border-color: var(--magenta); }
+        .series-milestone.complete { border-color: var(--green); }
+
+        .series-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-dim);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .series-name {
+            font-size: 12px;
+            line-height: 1.45;
+            color: var(--text-bright);
+        }
+
         /* Research */
         .research-tags {
             display: flex;
@@ -629,6 +676,7 @@
             .project-header { flex-direction: column; }
             .project-badges { margin-top: 4px; }
             .project-title { font-size: 17px; }
+            .series-roadmap-track { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
 </head>
@@ -716,15 +764,17 @@
                         <div class="project-title"><a href="https://www.eigenflux.ai/blog">EigenFlux Research Series</a></div>
                         <div class="project-badges">
                             <span class="badge badge-magenta">ongoing</span>
-                            <span class="badge badge-cyan">4 essays published</span>
+                            <span class="badge badge-cyan">4 essays live</span>
+                            <span class="badge badge-yellow">Blog 05 next · Aug 26</span>
                             <span class="badge badge-green">CC BY 4.0</span>
                         </div>
                     </div>
                     <div class="project-desc">
                         An ongoing research blog series asking, from first principles, what communication network AI agents need.
-                        The first four essays examine why the human internet fails agents, the Principle of Mutual Benefit,
-                        why scalable discovery requires a hub, and the hub's roles in relay, matching, and protection.
-                        The work is being published essay by essay; no whitepaper has been released.
+                        Four essays are live. Blog 05, <em>What Does an Agent Entrust to a Hub?</em>, is in final preparation
+                        for publication on August 26, followed by one new essay each week through Blog 10 on September 28.
+                        No whitepaper has been released: the essays are the source material, and whitepaper synthesis begins
+                        after the series, with v1.0 targeted for December 5.
                     </div>
                     <div class="blog-list">
                         <div class="blog-list-title">Published research series</div>
@@ -734,6 +784,27 @@
                             <li><a href="https://www.eigenflux.ai/blog/agents-need-a-hub">Why Agents Need a Hub</a></li>
                             <li><a href="https://www.eigenflux.ai/blog/what-can-a-hub-do-for-agents">What a Hub Can Do for Agents</a></li>
                         </ol>
+                    </div>
+                    <div class="series-roadmap" aria-label="EigenFlux research publishing roadmap">
+                        <div class="series-roadmap-title">Publishing roadmap</div>
+                        <div class="series-roadmap-track">
+                            <div class="series-milestone complete">
+                                <div class="series-date">Now</div>
+                                <div class="series-name">Blogs 01–04 live</div>
+                            </div>
+                            <div class="series-milestone current">
+                                <div class="series-date">Aug 26</div>
+                                <div class="series-name">Blog 05 · What Does an Agent Entrust to a Hub?</div>
+                            </div>
+                            <div class="series-milestone">
+                                <div class="series-date">Sep 02–28</div>
+                                <div class="series-name">Blogs 06–10 · published weekly</div>
+                            </div>
+                            <div class="series-milestone">
+                                <div class="series-date">Dec 05 target</div>
+                                <div class="series-name">Whitepaper v1.0</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-meta" style="margin-top: 14px;">
                         <a href="https://www.eigenflux.ai/blog">read the series</a>
@@ -836,7 +907,7 @@
                 <div class="pub-authors">
                     <span class="me">Y. Hu</span>*, Y. Shi* &nbsp;<span style="font-size:11px;color:var(--text-dim);">(*equal contribution)</span>
                 </div>
-                <div class="pub-venue">EigenFlux Research, 2026 — ongoing · 4 essays published</div>
+                <div class="pub-venue">EigenFlux Research, 2026 — ongoing · 4 essays live · Blog 05 due Aug 26</div>
             </div>
 
             <div class="pub">
