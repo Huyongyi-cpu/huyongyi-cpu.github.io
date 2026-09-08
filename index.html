@@ -86,24 +86,24 @@
     <meta property="og:image:alt" content="Yongyi Hu — Chief Scientist and Co-founder at Phronesis. Building the communication layer for autonomous agents.">
     <meta name="twitter:image" content="https://huyongyi-cpu.github.io/social-card.png">
     <meta name="twitter:image:alt" content="Yongyi Hu — Building the communication layer for autonomous agents.">
-    <meta name="theme-color" content="#0a0a0f">
+    <meta name="theme-color" content="#101719">
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-        <nav aria-label="Main navigation">
+        <div class="header-inner"><a class="wordmark" href="#name" aria-label="Yongyi Hu home">yh<span>.</span></a><nav aria-label="Main navigation">
             <a href="#projects">Work</a>
             <a href="#research">Research</a>
             <a href="#experience">Background</a>
             <a href="#contact">Contact</a>
-        </nav>
+        </nav></div>
     </header>
     <main id="main" class="container">
         <section class="hero" aria-labelledby="name">
-            <h1 id="name">Yongyi Hu</h1>
+            <div class="hero-copy"><h1 id="name" aria-label="Yongyi Hu">Yongyi <br>Hu<span class="name-period" aria-hidden="true">.</span></h1>
             <p class="aliases">Pascal <span aria-hidden="true">/</span> <span lang="zh">胡永祎</span></p>
-            <p class="role">Chief Scientist &amp; Co-founder, Phronesis</p>
+            <p class="role">Chief Scientist &amp; Co-founder<br><a href="https://www.eigenflux.ai">Phronesis</a></p>
             <p class="hero-statement">Building the communication layer for autonomous agents.</p>
             <p class="previously">Previously at MiniMax and Meta FAIR Paris.</p>
             <div class="hero-actions">
@@ -116,15 +116,51 @@
                 <a href="https://scholar.google.com/citations?user=mq4Z_ZMAAAAJ&amp;hl=en">Google Scholar</a>
                 <a href="https://github.com/phronesis-io">Phronesis on GitHub</a>
             </div>
+            </div>
+            <figure class="network-figure" aria-labelledby="network-title">
+                <div class="network-canvas">
+                    <svg class="network-art" viewBox="0 0 520 530" aria-hidden="true">
+                        <defs>
+                            <radialGradient id="signal-glow"><stop stop-color="#72d8d1" stop-opacity=".16"/><stop offset="1" stop-color="#72d8d1" stop-opacity="0"/></radialGradient>
+                            <linearGradient id="signal-line" x2="1" y2="1"><stop stop-color="#72d8d1" stop-opacity=".75"/><stop offset="1" stop-color="#72d8d1" stop-opacity=".12"/></linearGradient>
+                        </defs>
+                        <circle cx="260" cy="265" r="245" fill="url(#signal-glow)"/>
+                        <g fill="none" stroke="#304344" stroke-width="1">
+                            <ellipse cx="260" cy="265" rx="204" ry="204"/>
+                            <ellipse cx="260" cy="265" rx="146" ry="204" transform="rotate(34 260 265)"/>
+                            <ellipse cx="260" cy="265" rx="146" ry="204" transform="rotate(-34 260 265)"/>
+                            <ellipse cx="260" cy="265" rx="204" ry="73" transform="rotate(-24 260 265)"/>
+                            <ellipse cx="260" cy="265" rx="204" ry="73" transform="rotate(24 260 265)"/>
+                        </g>
+                        <g fill="none" stroke="url(#signal-line)" stroke-width="1.5">
+                            <path d="M93 147 Q130 270 260 265 T424 381"/>
+                            <path d="M360 87 Q255 142 260 265 T115 386"/>
+                            <path d="M68 301 Q173 254 260 265 T450 213"/>
+                        </g>
+                        <g fill="#8ae0d5"><circle cx="93" cy="147" r="4"/><circle cx="360" cy="87" r="4"/><circle cx="424" cy="381" r="4"/><circle cx="115" cy="386" r="4"/><circle cx="68" cy="301" r="3"/><circle cx="450" cy="213" r="3"/></g>
+                        <g fill="#101a1c" stroke="#72d8d1"><circle cx="260" cy="265" r="32"/><circle cx="260" cy="265" r="40" stroke-opacity=".3"/></g>
+                        <path d="M248 256h24m-24 9h18m-18 9h24" stroke="#adeae3" stroke-width="2" fill="none"/>
+                        <g fill="#9baeb1" font-size="12" font-family="monospace"><text x="57" y="131">Agent</text><text x="371" y="77">Agent</text><text x="430" y="404">Agent</text><text x="75" y="412">Agent</text></g>
+                    </svg>
+                    <span class="network-label" id="network-title">Individual agents. Shared possibilities.</span>
+                </div>
+                <div class="network-controls" role="group" aria-label="Explore agent network principles">
+                    <button type="button" aria-pressed="true" data-principle="discover">Discover</button>
+                    <button type="button" aria-pressed="false" data-principle="connect">Connect</button>
+                    <button type="button" aria-pressed="false" data-principle="trust">Trust</button>
+                </div>
+                <figcaption id="network-caption" aria-live="polite">Find a useful signal you didn’t know to search for.</figcaption>
+            </figure>
         </section>
         <section id="about" class="about" aria-labelledby="about-title">
-            <h2 id="about-title">About</h2>
+            <h2 id="about-title">From models <br>to networks.</h2><div class="about-copy">
             <p>I work on how AI agents discover useful information, communicate, and act on it. At Phronesis, I co-founded <a href="https://www.eigenflux.ai">EigenFlux</a> to build a shared network for those interactions.</p>
             <p>My earlier work spans large model training at MiniMax and automated theorem proving at Meta FAIR Paris. I hold dual degrees from Shanghai Jiao Tong University and École Polytechnique.</p>
+            </div>
         </section>
         <section id="projects" aria-labelledby="work-title">
-            <h2 id="work-title">Selected work</h2>
-            <article class="featured-project">
+            <div class="section-heading"><h2 id="work-title">Selected work</h2><p>Systems built around a research question.</p></div>
+            <article class="featured-project"><div class="project-identity"><img class="eigen-mark" src="/eigenflux-mark.webp" alt="" width="192" height="192" loading="lazy"><p>EigenFlux</p><span>Communication for AI agents</span></div><div class="featured-copy">
                 <div class="project-heading"><h3><a href="https://www.eigenflux.ai">EigenFlux</a></h3><span class="status">Current work</span></div>
                 <p class="project-intro">A communication network where AI agents share what they know, express what they need, and discover relevant signals.</p>
                 <p>I work on the Agent Transmission Layer, the matching algorithms that route signals, and the evaluation of proactive agent behavior.</p>
@@ -135,6 +171,7 @@
                     <a href="https://github.com/phronesis-io/eigenflux-claude-plugin">Claude Code plugin</a>
                     <a href="https://github.com/phronesis-io/codex-eigenflux">Codex plugin</a>
                 </div>
+            </div>
             </article>
             <article class="project">
                 <h3><a href="https://github.com/phronesis-io/proactive-eval">Proactive Agent Evaluation</a></h3>
@@ -150,15 +187,15 @@
             </article>
         </section>
         <section id="research" aria-labelledby="research-title">
-            <h2 id="research-title">Research &amp; writing</h2>
+            <div class="section-heading"><h2 id="research-title">Research &amp; writing</h2><span class="research-note">With Yiqi Shi</span></div>
             <p class="section-intro">What communication network do AI agents need? An ongoing series with Yiqi Shi, working from first principles toward the design of an agent network.</p>
-            <article class="latest-essay">
+            <div class="writing-grid"><article class="latest-essay">
                 <p class="essay-meta">Latest essay <span aria-hidden="true">/</span> <time datetime="2026-08-26">August 26, 2026</time></p>
                 <h3><a href="https://www.eigenflux.ai/blog/what-does-an-agent-entrust-to-a-hub">What an Agent Entrusts to a Hub</a></h3>
                 <p>What information and authority should an agent give a hub, and what responsibilities should that create?</p>
                 <a href="https://www.eigenflux.ai/blog/what-does-an-agent-entrust-to-a-hub">Read the essay</a>
             </article>
-            <ol class="essay-list" aria-label="Earlier essays in reading order">
+            <div class="earlier-essays"><p class="reading-label">The series, from the beginning</p><ol class="essay-list" aria-label="Earlier essays in reading order">
                 <li><a href="https://www.eigenflux.ai/blog/internet-fails-agents">Why the Internet Fails AI Agents</a></li>
                 <li><a href="https://www.eigenflux.ai/blog/principle-of-mutual-benefit">What Principle Drives an Agent Network?</a></li>
                 <li><a href="https://www.eigenflux.ai/blog/agents-need-a-hub">Why Agents Need a Hub</a></li>
@@ -166,8 +203,8 @@
             </ol>
             <p class="authorship">Yongyi Hu and Yiqi Shi contributed equally to the series.</p>
             <div class="project-links"><a href="https://www.eigenflux.ai/blog">All essays</a><a href="https://github.com/phronesis-io/eigenflux-whitepaper">Research source material</a></div>
-            <div class="questions">
-                <h3>Questions I’m thinking about</h3>
+            </div></div><div class="questions">
+                <h3>Open questions</h3><div class="question-grid">
                 <article>
                     <h4>What makes a recommendation useful?</h4>
                     <p>I’m interested in recommendations that understand what someone is working toward and surface information that changes their next decision. How should we measure that value?</p>
@@ -183,6 +220,7 @@
                     <p>Signals from different agents may reveal a connection that none could find independently. What would count as evidence of that ability, and which network designs make it possible?</p>
                     <a href="https://www.eigenflux.ai/blog/what-can-a-hub-do-for-agents">Related essay: the role of a hub</a>
                 </article>
+            </div>
             </div>
         </section>
 <section id="experience">
@@ -265,7 +303,7 @@
             </div>
         </section>
         <section id="contact" class="contact" aria-labelledby="contact-title">
-            <h2 id="contact-title">Get in touch</h2>
+            <h2 id="contact-title">Good ideas start<br>with a conversation.</h2>
             <p>For research conversations, collaboration, or questions about EigenFlux:</p>
             <a class="email" href="mailto:pascal@phronesis.studio">pascal@phronesis.studio</a>
         </section>
@@ -274,5 +312,6 @@
         <p>Yongyi Hu <span aria-hidden="true">/</span> Pascal <span aria-hidden="true">/</span> <span lang="zh">胡永祎</span></p>
         <p>Updated <time datetime="2026-09-08">September 8, 2026</time></p>
     </footer>
+    <script src="/network.js" defer></script>
 </body>
 </html>
