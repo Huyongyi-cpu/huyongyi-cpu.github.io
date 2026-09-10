@@ -4,8 +4,36 @@ const slides = [...document.querySelectorAll('.slide')];
 const mode = document.getElementById('mode');
 let current = Math.max(0, slides.findIndex(s => '#' + s.id === location.hash));
 let presenting = false;
+const slideJump = document.getElementById('slide-jump');
+const notesDialog = document.getElementById('notes-dialog');
+const notesToggle = document.getElementById('notes-toggle');
+slides.forEach((slide, index) => {
+  const option = document.createElement('option');
+  option.value = index;
+  option.textContent = `${index + 1}. ${slide.dataset.title}`;
+  slideJump?.append(option);
+});
+slideJump?.addEventListener('change', () => {
+  showSlide(Number(slideJump.value));
+  if (!presenting) slides[current].scrollIntoView({block: 'start'});
+});
+notesToggle?.addEventListener('click', () => {
+  if (!presenting) {
+    const visible = slides.findIndex(s => s.getBoundingClientRect().bottom > 180);
+    if (visible >= 0) showSlide(visible, false);
+  }
+  const source = slides[current].querySelector('.lecture-note > div');
+  const content = document.getElementById('notes-content');
+  content.replaceChildren();
+  if (source) content.append(source.cloneNode(true));
+  else content.textContent = '这一页没有补充提示。';
+  document.getElementById('notes-title').textContent = slides[current].dataset.title;
+  notesDialog.showModal();
+});
+document.getElementById('notes-close')?.addEventListener('click', () => notesDialog.close());
 function showSlide(index, updateHash = true) {
   current = Math.max(0, Math.min(slides.length - 1, index));
+  if (slideJump) slideJump.value = current;
   slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
   document.getElementById('page-label').textContent = `${current + 1} / ${slides.length} · ${slides[current].dataset.title}`;
   document.getElementById('progress').style.width = `${(current + 1) / slides.length * 100}%`;
@@ -30,6 +58,7 @@ mode.addEventListener('click', () => setMode(!presenting));
 document.getElementById('previous').addEventListener('click', () => showSlide(current - 1));
 document.getElementById('next').addEventListener('click', () => showSlide(current + 1));
 document.addEventListener('keydown', event => {
+  if (notesDialog?.open) return;
   if (!presenting || event.altKey || event.ctrlKey || event.metaKey) return;
   if (event.key === 'Escape') { setMode(false); return; }
   if (event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
@@ -61,6 +90,10 @@ fullscreen.addEventListener('click', async () => {
 });
 document.addEventListener('fullscreenchange', () => { fullscreen.textContent = document.fullscreenElement ? '退出全屏' : '全屏'; });
 showSlide(current, false);
+if (new URLSearchParams(location.search).get('present') === '1') {
+  presenting = true;
+  setMode(true);
+}
 
 // Both methods count one arithmetic reduction as one step; swaps are free here.
 function gcdTrace(a, b, method) {
@@ -90,15 +123,16 @@ if (demoForm) {
     const shown = Math.min(step, states.length - 1);
     const list = document.getElementById(id + '-trace');
     list.replaceChildren();
-    const start = Math.max(0, shown - 11);
-    list.start = start + 1;
+    const start = Math.max(0, shown - 3);
+    list.start = start;
     for (let i = start; i <= shown; i++) {
       const li = document.createElement('li'); li.textContent = states[i].text; list.append(li);
     }
     const done = shown === states.length - 1;
+    document.getElementById(id + '-pair').textContent = `(${states[shown].a}, ${states[shown].b})`;
     document.getElementById(id + '-count').textContent = `${shown} 次${id === 'mod' ? '取余' : '减法'}${done ? ` · 完成，gcd = ${states[shown].a}` : ''}`;
     document.getElementById(id + '-bar').style.width = `${Math.max(0, shown) / Math.max(modStates.length - 1, subStates.length - 1) * 100}%`;
-    document.getElementById(id + '-omitted').textContent = start ? `省略前 ${start} 个状态，显示最近 12 个。` : '';
+    document.getElementById(id + '-omitted').textContent = start ? `省略前 ${start} 个状态，显示最近 4 个。` : '';
     list.parentElement.scrollTop = list.parentElement.scrollHeight;
   }
   function draw() {
@@ -106,6 +140,7 @@ if (demoForm) {
     const done = step >= Math.max(modStates.length, subStates.length) - 1;
     document.getElementById('step').disabled = done;
     document.getElementById('finish').disabled = done;
+    document.getElementById('jump-steps').disabled = done;
     document.getElementById('demo-result').textContent = done
       ? `结果都是 ${modStates.at(-1).a}。取余 ${modStates.length - 1} 次，减法 ${subStates.length - 1} 次。这里比较的是操作次数，不是运行时间。`
       : '每次“下一步”，两种方法各做一次运算；先完成的一侧会停下。';
@@ -123,10 +158,11 @@ if (demoForm) {
     const [a, b] = button.dataset.pair.split(',');
     document.getElementById('input-a').value = a; document.getElementById('input-b').value = b; reset();
   }));
+  document.getElementById('jump-steps').addEventListener('click', () => { step = Math.min(step + 1000, Math.max(modStates.length, subStates.length) - 1); draw(); });
   document.getElementById('step').addEventListener('click', () => { step++; draw(); });
   document.getElementById('finish').addEventListener('click', () => { step = Math.max(modStates.length, subStates.length) - 1; draw(); });
   demoForm.addEventListener('input', () => {
-    document.getElementById('step').disabled = true; document.getElementById('finish').disabled = true;
+    document.getElementById('step').disabled = true; document.getElementById('finish').disabled = true; document.getElementById('jump-steps').disabled = true;
     document.getElementById('demo-result').textContent = '输入已修改。点击“重新开始”应用新数字。';
   });
   reset();
