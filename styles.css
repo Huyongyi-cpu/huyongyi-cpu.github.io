@@ -686,15 +686,19 @@ nav a:hover {
     }
     .header-inner {
         min-height:64px;
+        gap:16px;
     }
     .wordmark {
         font-size:27px;
     }
     nav {
-        gap:16px;
+        gap:0 16px;
+        flex-wrap:wrap;
+        justify-content:flex-end;
     }
     nav a {
-        font-size:12px;
+        font-size:14px;
+        padding-block:8px;
     }
     .hero {
         grid-template-columns:1fr;
