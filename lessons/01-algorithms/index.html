@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://huyongyi-cpu.github.io/lessons/01-algorithms/">
 <meta property="og:type" content="article"><meta property="og:locale" content="zh_CN"><meta property="og:title" content="第一讲：从 gcd 到 ChatGPT"><meta property="og:description" content="Pascal 的算法小课堂：什么是算法，为什么正确，什么时候结束？"><meta property="og:url" content="https://huyongyi-cpu.github.io/lessons/01-algorithms/">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="第一讲：从 gcd 到 ChatGPT"><meta name="twitter:description" content="算法、正确性、终止性与计算量。含交互演示和参考资料。"><meta name="theme-color" content="#101719">
-<link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../lesson.css">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="preload" href="../fonts/classroom-sans.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../lesson.css?v=20260910-type2">
 <script src="../lesson.js" defer></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
 <main id="main">
 <section class="slide cover" id="opening" data-title="开场问题">
 <p class="chapter">算法系列 · 第一讲</p>
-<h1>从 gcd 到 ChatGPT</h1>
+<h1>从 <span class="math-term">gcd</span> 到 <span class="math-term">ChatGPT</span></h1>
 <div class="route" aria-hidden="true"><span>gcd(a, b)</span><span class="line"></span><span>ChatGPT</span></div>
 <p class="lead">ChatGPT 是不是一个算法？</p>
 <p class="muted">先带着这个问题，走完一个两千多年前的计算过程。</p>
@@ -38,19 +38,19 @@
 </section>
 <section class="slide" id="training" data-title="训练与推理">
 <p class="chapter">03 / 两种不同的计算过程</p><h2>训练在改变参数，推理在使用参数。</h2>
-<div class="two-col"><div><h3>训练 · 学出参数</h3><div class="flow"><span>数据批次</span><i>→</i><span>前向计算</span><i>→</i><span>计算损失</span><i>→</i><span>更新参数</span></div><p>以自回归语言模型预训练为例：根据前文预测后续 token，衡量预测的误差，再用优化算法调整参数。<a class="ref" href="#ref-gpt3">[5]</a></p><p class="note">指令微调、偏好学习等后训练还有其他数据和目标；“下一个 token 预测”不能概括全部训练。<a class="ref" href="#ref-instruct">[6]</a></p></div><div><h3>推理 · 生成文本</h3><div class="flow"><span>已有 token</span><i>→</i><span>下一个 token 的分布</span><i>→</i><span>选择 token</span><i>→</i><span>加入上下文</span></div><p>然后继续下一轮，直到模型结束输出或触发长度上限等停止条件。选择可以包含采样；token 也不一定是一个完整的词。</p><p class="note">这是自回归文本生成的简化模型；通常不会在每轮生成时更新模型权重。工具调用与多模态产品还包含额外过程。</p></div></div>
+<div class="two-col"><div><h3>训练 · 学出参数</h3><ol class="flow" aria-label="训练步骤"><li>数据批次</li><li>前向计算</li><li>计算损失</li><li>更新参数</li></ol><p>以自回归语言模型预训练为例：根据前文预测后续 token，衡量预测的误差，再用优化算法调整参数。<a class="ref" href="#ref-gpt3">[5]</a></p><p class="note">指令微调、偏好学习等后训练还有其他数据和目标；“下一个 token 预测”不能概括全部训练。<a class="ref" href="#ref-instruct">[6]</a></p></div><div><h3>推理 · 生成文本</h3><ol class="flow" aria-label="生成步骤"><li>已有 token</li><li>下一个 token 的分布</li><li>选择 token</li><li>加入上下文</li></ol><p>然后继续下一轮，直到模型结束输出或触发长度上限等停止条件。选择可以包含采样；token 也不一定是一个完整的词。</p><p class="note">这是自回归文本生成的简化模型；通常不会在每轮生成时更新模型权重。工具调用与多模态产品还包含额外过程。</p></div></div>
 <p class="question">计算过程可以写清楚，不代表生成内容就一定正确。</p>
 </section>
 <section class="slide" id="gcd" data-title="定义 gcd 问题">
 <p class="chapter">04 / 回到一个可以完全说清楚的问题</p><h2>最大公约数：最大的共同尺度。</h2>
 <p>GCD = Greatest Common Divisor。输入两个正整数 a、b，输出能同时整除它们的最大正整数 d。</p>
-<div class="formula-panel"><div class="equation">gcd(a, b) = max { d ∈ ℤ<sub>&gt;0</sub> : d ∣ a 且 d ∣ b }</div><p class="note">d ∣ a 表示“d 整除 a”。例如，2 ∣ 26，因为 26 = 2 × 13。</p></div>
+<div class="formula-panel"><div class="equation"><span class="math-term">gcd(a, b) =</span> <span class="math-term">max { d ∈ ℤ<sub>&gt;0</sub> :</span> <span class="math-term">d ∣ a <span class="math-zh">且</span> d ∣ b }</span></div><p class="note">d ∣ a 表示“d 整除 a”。例如，2 ∣ 26，因为 26 = 2 × 13。</p></div>
 <div class="two-col"><div><h3>例如：26 和 6</h3><p>26 的正因数：1、2、13、26<br>6 的正因数：1、2、3、6<br>共同的正因数：1、2</p><div class="equation">gcd(26, 6) = <strong>2</strong></div></div><div><h3>答案为什么存在？</h3><p>1 总是公约数，所以候选集合非空。所有正公约数都不超过 min(a, b)，所以候选集合有限。非空的有限集合一定有最大值。</p><p class="note">算法内部会出现 0，约定 gcd(a, 0) = a（a &gt; 0）。本讲不处理 gcd(0, 0)。</p></div></div>
 </section>
 <section class="slide" id="algorithm" data-title="欧几里得算法">
 <p class="chapter">05 / 同一个算法，不同的表达</p><h2>把问题换成更小的同一个问题。</h2>
 <p>欧几里得《几何原本》约成书于公元前 300 年；第 VII 卷命题 1–2 记录了相关过程。这里使用现代的取余写法。<a class="ref" href="#ref-euclid">[7]</a></p>
-<div class="two-col"><div><h3>数学表达</h3><div class="equation">gcd(a, 0) = a<br>gcd(a, b) = gcd(b, a mod b)<br><span class="note">第二行适用于 b &gt; 0。</span></div><p>自然语言：用 b 替换 a，用余数替换 b。反复执行，直到 b 变为 0，返回 a。</p></div><div><h3>伪代码</h3><pre><code>GCD(a, b):
+<div class="two-col"><div><h3>数学表达</h3><div class="equation"><span class="math-term">gcd(a, 0) = a</span><br><span>gcd(a, b) =</span> <span class="math-term">gcd(b, a mod b)</span><br><span class="note">第二行适用于 b &gt; 0。</span></div><p>自然语言：用 b 替换 a，用余数替换 b。反复执行，直到 b 变为 0，返回 a。</p></div><div><h3>伪代码</h3><pre><code>GCD(a, b):
     while b ≠ 0:
         (a, b) ← (b, a mod b)
     return a</code></pre><p class="note">括号表示同时赋值：右边的两个值都用更新前的 a、b 计算。即便输入 a &lt; b，这个取余版本也能工作。</p></div></div>
