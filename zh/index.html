@@ -72,9 +72,9 @@
     <header class="site-header">
         <div class="header-inner"><a class="wordmark" href="#name" aria-label="胡永祎 首页">yh<span>.</span></a><nav aria-label="主导航">
             <a href="#projects">在做的事</a>
-            <a href="#research">研究</a>
-            <a href="#classroom">小课堂</a>
             <a href="#experience">经历</a>
+            <a href="#research">研究</a>
+            <a class="nav-optional" href="#classroom">小课堂</a>
             <a href="#contact">联系</a>
             <a class="lang-switch" href="/" hreflang="en" lang="en">English</a>
         </nav></div>
@@ -167,44 +167,6 @@
                 <a href="https://github.com/phronesis-io/pascal-jarvis/blob/main/FINAL_STATUS.md">项目总结（英文）</a>
             </article>
         </section>
-        <section id="research" aria-labelledby="research-title">
-            <div class="section-heading"><h2 id="research-title">研究与写作</h2><span class="research-note">与 Yiqi Shi 合写</span></div>
-            <p class="section-intro">AI Agent 需要一张什么样的通信网络？这是我和 Yiqi Shi 一起写的系列文章，从第一性原理出发，一步步推到 Agent 网络该怎么设计。文章为英文，前两篇有中文版。</p>
-            <div class="writing-grid"><article class="latest-essay">
-                <p class="essay-meta">最新一篇 <span aria-hidden="true">/</span> <time datetime="2026-09-21">2026 年 9 月 21 日</time></p>
-                <h3><a href="https://www.eigenflux.ai/blog/what-makes-a-good-match-in-an-agent-network" lang="en">What Makes a Good Match in an Agent Network?</a></h3>
-                <p>Agent 网络里，什么才算好的匹配？枢纽该怎么找候选、什么时候推送、怎么从反馈里学，同时对不确定性保持诚实。</p>
-                <a href="https://www.eigenflux.ai/blog/what-makes-a-good-match-in-an-agent-network">阅读全文</a>
-            </article>
-            <div class="earlier-essays"><p class="reading-label">从第一篇读起</p><ol class="essay-list" aria-label="系列文章，按阅读顺序">
-                <li><a href="https://www.eigenflux.ai/blog/internet-fails-agents">为什么今天的互联网装不下 AI Agent</a></li>
-                <li><a href="https://www.eigenflux.ai/blog/principle-of-mutual-benefit">一个真正为 Agent 设计的网络，究竟该长什么样？</a></li>
-                <li><a href="https://www.eigenflux.ai/blog/agents-need-a-hub" lang="en">Why Agents Need a Hub</a></li>
-                <li><a href="https://www.eigenflux.ai/blog/what-can-a-hub-do-for-agents" lang="en">What a Hub Can Do for Agents</a></li>
-                <li><a href="https://www.eigenflux.ai/blog/what-does-an-agent-entrust-to-a-hub" lang="en">What an Agent Entrusts to a Hub</a></li>
-            </ol>
-            <p class="authorship">我和 Yiqi Shi 对本系列贡献相同。前两篇中文版由赵炜慈翻译，在文章页切换到中文即可阅读。</p>
-            <div class="project-links"><a href="https://www.eigenflux.ai/blog">全部文章</a><a href="https://github.com/phronesis-io/eigenflux-whitepaper">研究原始材料</a></div>
-            </div></div><div class="questions">
-                <h3>还没想清楚的问题</h3><div class="question-grid">
-                <article>
-                    <h4>什么样的推荐才算有用？</h4>
-                    <p>我想要的推荐，是能理解一个人在往哪儿走，并且递上会改变他下一步决定的信息。这种价值该怎么衡量？</p>
-                    <a href="https://www.eigenflux.ai/blog/what-makes-a-good-match-in-an-agent-network">相关文章：什么是好的匹配</a>
-                </article>
-                <article>
-                    <h4>信息流能发现搜索找不到的东西吗？</h4>
-                    <p>已知的需求，Agent 可以去搜。可它没想到要问的新事件、新机会呢？我在研究网络信息流什么时候能帮它做出有用的行动。</p>
-                    <a href="https://github.com/phronesis-io/proactive-eval">相关实验：主动性评测</a>
-                </article>
-                <article>
-                    <h4>网络能发现单个 Agent 看不到的东西吗？</h4>
-                    <p>不同 Agent 的信号放在一起，可能连出谁都看不到的关联。什么能算这种能力的证据？什么样的网络设计能做到？</p>
-                    <a href="https://www.eigenflux.ai/blog/what-can-a-hub-do-for-agents">相关文章：枢纽的作用</a>
-                </article>
-            </div>
-            </div>
-        </section>
 <section id="experience">
             <h2>经历</h2>
 
@@ -253,6 +215,44 @@
                         <li><time datetime="2023-02-27">2023.02.27</time><span>Meta 发布第一代 LLaMA，<a href="https://arxiv.org/abs/2302.13971">论文</a>致谢了我的数据收集工作。</span></li>
                     </ol>
                 </div>
+            </div>
+        </section>
+        <section id="research" aria-labelledby="research-title">
+            <div class="section-heading"><h2 id="research-title">研究与写作</h2><span class="research-note">与 Yiqi Shi 合写</span></div>
+            <p class="section-intro">AI Agent 需要一张什么样的通信网络？这是我和 Yiqi Shi 一起写的系列文章，从第一性原理出发，一步步推到 Agent 网络该怎么设计。文章为英文，前两篇有中文版。</p>
+            <div class="writing-grid"><article class="latest-essay">
+                <p class="essay-meta">最新一篇 <span aria-hidden="true">/</span> <time datetime="2026-09-21">2026 年 9 月 21 日</time></p>
+                <h3><a href="https://www.eigenflux.ai/blog/what-makes-a-good-match-in-an-agent-network" lang="en">What Makes a Good Match in an Agent Network?</a></h3>
+                <p>Agent 网络里，什么才算好的匹配？枢纽该怎么找候选、什么时候推送、怎么从反馈里学，同时对不确定性保持诚实。</p>
+                <a href="https://www.eigenflux.ai/blog/what-makes-a-good-match-in-an-agent-network">阅读全文</a>
+            </article>
+            <div class="earlier-essays"><p class="reading-label">从第一篇读起</p><ol class="essay-list" aria-label="系列文章，按阅读顺序">
+                <li><a href="https://www.eigenflux.ai/blog/internet-fails-agents">为什么今天的互联网装不下 AI Agent</a></li>
+                <li><a href="https://www.eigenflux.ai/blog/principle-of-mutual-benefit">一个真正为 Agent 设计的网络，究竟该长什么样？</a></li>
+                <li><a href="https://www.eigenflux.ai/blog/agents-need-a-hub" lang="en">Why Agents Need a Hub</a></li>
+                <li><a href="https://www.eigenflux.ai/blog/what-can-a-hub-do-for-agents" lang="en">What a Hub Can Do for Agents</a></li>
+                <li><a href="https://www.eigenflux.ai/blog/what-does-an-agent-entrust-to-a-hub" lang="en">What an Agent Entrusts to a Hub</a></li>
+            </ol>
+            <p class="authorship">我和 Yiqi Shi 对本系列贡献相同。前两篇中文版由赵炜慈翻译，在文章页切换到中文即可阅读。</p>
+            <div class="project-links"><a href="https://www.eigenflux.ai/blog">全部文章</a><a href="https://github.com/phronesis-io/eigenflux-whitepaper">研究原始材料</a></div>
+            </div></div><div class="questions">
+                <h3>还没想清楚的问题</h3><div class="question-grid">
+                <article>
+                    <h4>什么样的推荐才算有用？</h4>
+                    <p>我想要的推荐，是能理解一个人在往哪儿走，并且递上会改变他下一步决定的信息。这种价值该怎么衡量？</p>
+                    <a href="https://www.eigenflux.ai/blog/what-makes-a-good-match-in-an-agent-network">相关文章：什么是好的匹配</a>
+                </article>
+                <article>
+                    <h4>信息流能发现搜索找不到的东西吗？</h4>
+                    <p>已知的需求，Agent 可以去搜。可它没想到要问的新事件、新机会呢？我在研究网络信息流什么时候能帮它做出有用的行动。</p>
+                    <a href="https://github.com/phronesis-io/proactive-eval">相关实验：主动性评测</a>
+                </article>
+                <article>
+                    <h4>网络能发现单个 Agent 看不到的东西吗？</h4>
+                    <p>不同 Agent 的信号放在一起，可能连出谁都看不到的关联。什么能算这种能力的证据？什么样的网络设计能做到？</p>
+                    <a href="https://www.eigenflux.ai/blog/what-can-a-hub-do-for-agents">相关文章：枢纽的作用</a>
+                </article>
+            </div>
             </div>
         </section>
 <section id="publications">
