@@ -167,8 +167,10 @@ nav a:hover {
     margin-bottom:18px;
 }
 .previously {
-    font-size:13px;
+    font-size:14px;
+    line-height:1.65;
     color:var(--muted);
+    max-width:46ch;
 }
 .hero-actions {
     display:flex;
@@ -558,6 +560,37 @@ nav a:hover {
 .timeline-desc {
     font-size:14px;
 }
+.milestones {
+    list-style:none;
+    margin:20px 0 0;
+    padding:0;
+    border-top:1px solid var(--border);
+}
+.milestones li {
+    display:grid;
+    grid-template-columns:104px 1fr;
+    gap:16px;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+    font-size:14px;
+    line-height:1.6;
+}
+.milestones time {
+    font-size:12px;
+    color:var(--accent);
+    padding-top:2px;
+}
+.milestones .context {
+    color:var(--muted);
+    font-style:italic;
+}
+.milestones .context time {
+    color:var(--muted);
+}
+.lang-switch {
+    border-left:1px solid var(--border);
+    padding-left:20px;
+}
 .pub {
     padding:24px 0;
     border-bottom:1px solid var(--border);
@@ -852,6 +885,14 @@ nav a:hover {
     }
     .timeline-item {
         padding-left:22px;
+    }
+    .milestones li {
+        grid-template-columns:1fr;
+        gap:2px;
+    }
+    .lang-switch {
+        border-left:0;
+        padding-left:0;
     }
     .contact {
         padding-top:36px;

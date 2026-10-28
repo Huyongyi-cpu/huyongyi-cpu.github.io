@@ -9,6 +9,9 @@
     <meta name="author" content="Yongyi Hu">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://pascalhu.com/">
+    <link rel="alternate" hreflang="en" href="https://pascalhu.com/">
+    <link rel="alternate" hreflang="zh-CN" href="https://pascalhu.com/zh/">
+    <link rel="alternate" hreflang="x-default" href="https://pascalhu.com/">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="shortcut icon" href="/favicon.svg">
 
@@ -50,7 +53,7 @@
           "givenName": "Yongyi",
           "familyName": "Hu",
           "jobTitle": "Chief Scientist & Co-founder",
-          "description": "Chief Scientist and co-founder at Phronesis, building EigenFlux.ai — an agent-to-agent communication network. Previously large model training lead at MiniMax and research intern at Meta FAIR Paris.",
+          "description": "Chief Scientist and co-founder at Phronesis, building EigenFlux.ai — an agent-to-agent communication network. Working on large language models since 2022: LLM theorem proving and early LLaMA data collection at Meta FAIR Paris, then large model algorithm lead at MiniMax.",
           "url": "https://pascalhu.com/",
           "mainEntityOfPage": { "@id": "https://pascalhu.com/#website" },
           "worksFor": {
@@ -98,6 +101,7 @@
             <a href="#classroom">Classroom</a>
             <a href="#experience">Background</a>
             <a href="#contact">Contact</a>
+            <a class="lang-switch" href="/zh/" hreflang="zh-CN" lang="zh-CN">中文</a>
         </nav></div>
     </header>
     <main id="main" class="container">
@@ -106,7 +110,7 @@
             <p class="aliases">Pascal <span aria-hidden="true">/</span> <span lang="zh">胡永祎</span></p>
             <p class="role">Chief Scientist &amp; Co-founder<br><a href="https://www.eigenflux.ai">Phronesis</a></p>
             <p class="hero-statement">Building the communication layer for autonomous agents.</p>
-            <p class="previously">Previously at MiniMax and Meta FAIR Paris.</p>
+            <p class="previously">Working on large language models since 2022: theorem proving and early LLaMA data work at Meta FAIR Paris, then foundation model training at MiniMax.</p>
             <div class="hero-actions">
                 <a class="button primary" href="https://www.eigenflux.ai">Explore EigenFlux</a>
                 <a class="button" href="#research">Read my research</a>
@@ -146,9 +150,9 @@
                     <span class="network-label" id="network-title">Individual agents. Shared possibilities.</span>
                 </div>
                 <div class="network-controls" role="group" aria-label="Explore agent network principles">
-                    <button type="button" aria-pressed="true" data-principle="discover">Discover</button>
-                    <button type="button" aria-pressed="false" data-principle="connect">Connect</button>
-                    <button type="button" aria-pressed="false" data-principle="trust">Trust</button>
+                    <button type="button" aria-pressed="true" data-principle="discover" data-caption="Find a useful signal you didn’t know to search for.">Discover</button>
+                    <button type="button" aria-pressed="false" data-principle="connect" data-caption="Bring together what one agent knows and another needs.">Connect</button>
+                    <button type="button" aria-pressed="false" data-principle="trust" data-caption="Share only what the task requires. Keep authority bounded.">Trust</button>
                 </div>
                 <figcaption id="network-caption" aria-live="polite">Find a useful signal you didn’t know to search for.</figcaption>
             </figure>
@@ -156,7 +160,7 @@
         <section id="about" class="about" aria-labelledby="about-title">
             <h2 id="about-title">About</h2><div class="about-copy">
             <p>I work on how AI agents discover useful information, communicate, and act on it. At Phronesis, I co-founded <a href="https://www.eigenflux.ai">EigenFlux</a> to build a shared network for those interactions.</p>
-            <p>My earlier work spans large model training at MiniMax and automated theorem proving at Meta FAIR Paris. I hold dual degrees from Shanghai Jiao Tong University and École Polytechnique.</p>
+            <p>I started on large language models at Meta FAIR Paris in 2022, working on LLM-based theorem proving and helping collect data for the original LLaMA. At MiniMax I led model data, product algorithms and code pre-training, and contributed to MiniMax-01 and MiniMax-M1. I hold dual degrees from Shanghai Jiao Tong University and École Polytechnique.</p>
             </div>
         </section>
         <section id="projects" aria-labelledby="work-title">
@@ -249,8 +253,8 @@
                     <div class="timeline-role">Large Model Algorithm Lead</div>
                     <div class="timeline-desc">
                         Led model data, Talkie/星野 product algorithms, and code pre-training.
-                        Covered pre-training and post-training across the full stack.
-
+                        Covered pre-training and post-training across the full stack, and contributed to
+                        MiniMax-01 and MiniMax-M1.
                     </div>
                 </div>
             </div>
@@ -261,11 +265,14 @@
                     <h3>Meta AI (FAIR Paris)</h3>
                     <div class="timeline-role">Research Intern</div>
                     <div class="timeline-desc">
-                        Worked on automated theorem proving using LLM + reinforcement learning in the Lean environment
-                        (<a href="https://ai.meta.com/blog/ai-math-theorem-proving/">acknowledged in blog</a>).
-                        Contributed to early-stage data collection for the LLaMA project
-                        (<a href="https://arxiv.org/abs/2302.13971">acknowledged in paper</a>).
+                        Worked on automated theorem proving using LLM + reinforcement learning in the Lean environment,
+                        and contributed to early-stage data collection for the LLaMA project.
                     </div>
+                    <ol class="milestones" aria-label="Milestones at Meta FAIR, with industry context">
+                        <li><time datetime="2022-11-03">Nov 3, 2022</time><span>Meta shares its LLM theorem-proving results; <a href="https://ai.meta.com/blog/ai-math-theorem-proving/">the announcement</a> acknowledges my work.</span></li>
+                        <li class="context"><time datetime="2022-11-30">Nov 30, 2022</time><span>OpenAI releases ChatGPT.</span></li>
+                        <li><time datetime="2023-02-27">Feb 27, 2023</time><span>Meta releases the original LLaMA; <a href="https://arxiv.org/abs/2302.13971">the paper</a> acknowledges my data collection work.</span></li>
+                    </ol>
                 </div>
             </div>
         </section>
